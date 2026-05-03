@@ -1,0 +1,136 @@
+/* Reset de base pour annuler les marges par défaut des navigateurs */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Style général de la page */
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #121212; /* Fond très sombre */
+    color: #f5f5f5; /* Texte blanc cassé/gris très clair */
+    line-height: 1.6;
+}
+
+/* L'en-tête (Header) */
+header {
+    text-align: center;
+    padding: 60px 20px 40px;
+    border-bottom: 1px solid #222;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+header p {
+    color: #888;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+}
+
+/* La barre de navigation */
+nav a {
+    color: #f5f5f5;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #666; /* Le texte devient gris au passage de la souris */
+}
+
+/* Le contenu principal */
+main {
+    padding: 60px 20px;
+    max-width: 1200px; /* Le site ne s'étirera pas à l'infini sur les grands écrans */
+    margin: 0 auto; /* Permet de centrer le contenu */
+}
+
+.albums-grid h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+}
+
+/* Le pied de page */
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: #444;
+    font-size: 0.8rem;
+    border-top: 1px solid #222;
+    margin-top: 40px;
+}
+/* --- LA GRILLE DE PHOTOS --- */
+
+.grid-container {
+    display: grid;
+    /* Crée des colonnes automatiques qui font au moins 300px de large */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px; /* L'espace entre les photos */
+}
+
+.grid-item {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3 / 2; /* Format paysage classique pour la photo */
+    cursor: pointer;
+}
+
+.grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Recadre l'image sans la déformer */
+    transition: transform 0.5s ease; /* Animation fluide */
+}
+
+/* L'effet d'assombrissement et le titre au passage de la souris */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0; /* Invisible par défaut */
+    transition: opacity 0.3s ease;
+}
+
+.overlay h3 {
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 1rem;
+    transform: translateY(20px); /* Le texte démarre un peu plus bas */
+    transition: transform 0.3s ease;
+}
+
+/* Ce qui se passe quand la souris survole la photo */
+.grid-item:hover img {
+    transform: scale(1.05); /* Zoom léger sur l'image */
+}
+
+.grid-item:hover .overlay {
+    opacity: 1; /* L'assombrissement apparaît */
+}
+
+.grid-item:hover .overlay h3 {
+    transform: translateY(0); /* Le texte remonte à sa place */
+}
