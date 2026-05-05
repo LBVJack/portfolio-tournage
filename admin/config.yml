@@ -10,6 +10,7 @@ collections:
     label: "Mes Projets"
     folder: "projets" # Les données de tes albums seront ici
     extension: "json" # On enregistre en format JSON
+    format: "json"
     create: true
     slug: "{{slug}}"
     fields:
